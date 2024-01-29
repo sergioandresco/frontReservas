@@ -1,0 +1,20 @@
+.NavBar{
+    background: linear-gradient(180deg, rgba(65,4,237,0.78) 0%, rgba(17,3,56,0.97) 65%);
+}
+
+.container-optNavBar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0px;
+}
+
+.optNavBar > img{
+    filter: brightness(0) invert(1);
+}
+
+.optNavBar > span{
+    color: white;
+}
