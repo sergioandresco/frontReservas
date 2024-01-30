@@ -8,7 +8,8 @@ import calendarList from '../../img/calendar-list.svg';
 import open from '../../img/open-navbar.svg';
 import close from '../../img/close-navbar.svg';
 
-const NavBar: React.FC<{ setShowForm: (value: boolean) => void }> = ({ setShowForm }) => {
+const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void }> = ({ setShowForm, setShowListEvent }) => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   const { width } = useSpring({
@@ -54,7 +55,19 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void }> = ({ setShowFo
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => setShowForm(true)}>{isOpen ? 'Create Event' : null}</animated.span>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(true); setShowListEvent(false); }}>{isOpen ? 'Create Event' : null}</animated.span>
+            </li>
+
+          </div>
+
+          <div>
+
+            <li className='optNavBar'>
+              <img src={calendarList} alt="createEvent-icon"/>
+            </li>
+
+            <li className='optNavBar'>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); }}>{isOpen ? 'Event List' : null}</animated.span>
             </li>
 
           </div>
