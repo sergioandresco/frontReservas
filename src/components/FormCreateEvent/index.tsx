@@ -98,12 +98,12 @@ function FormCreateEvent() {
             <label htmlFor="dateEvent">Date Event</label>
             <input type="date" id="dateEvent" name="date_event" value={dateEvent} onChange={e => setDateEvent(e.target.value)} />
 
-            <label htmlFor="numSeats">Number of seats to reserve</label>
+            <label htmlFor="numSeats">Total number of seats for the event</label>
             <input type="number" id="numSeats" name="number_of_places" min="1" value={numberOfPlaces} onChange={e => setNumberOfPlaces(e.target.value)} />
 
             <button type="submit">Submit</button>
         </form>
-        
+
     )
 }
 

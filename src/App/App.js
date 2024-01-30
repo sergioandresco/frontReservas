@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App/App.css'
+import '../App/App.css';
 import { NavBar } from '../components/NavBar/index.tsx'
 import { FormCreateEvent } from '../components/FormCreateEvent/index.tsx'
 import { ListEvent } from '../components/ListEvent/index.tsx'
