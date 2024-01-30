@@ -5,8 +5,10 @@ import home from '../../img/home.svg';
 import calendarEvent from '../../img/calendar-event.svg';
 import calendarAdd from '../../img/calendar-add.svg';
 import calendarList from '../../img/calendar-list.svg';
+import open from '../../img/open-navbar.svg';
+import close from '../../img/close-navbar.svg';
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<{ setShowForm: (value: boolean) => void }> = ({ setShowForm }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { width } = useSpring({
@@ -22,7 +24,7 @@ const NavBar: React.FC = () => {
   });
 
   return (
-    <div style={{ position: 'fixed', left: 0, top: 0, bottom: 0}} className='NavBar'>
+    <div className='NavBar'>
 
       <animated.div
         style={{
@@ -33,14 +35,43 @@ const NavBar: React.FC = () => {
 
         <ul className='container-optNavBar'>
 
-          <li className='optNavBar'>
-            <img src={home} alt="home-icon" onClick={() => setIsOpen(!isOpen)}/>
-          </li>
+          <div>
 
-          <li className='optNavBar'>
-            <animated.span style={{ opacity }}>{isOpen ? 'Home' : null}</animated.span>
-          </li>
+            <li className='optNavBar'>
+              <img src={home} alt="home-icon"/>
+            </li>
 
+            <li className='optNavBar'>
+              <animated.span style={{ opacity }}>{isOpen ? 'Home' : null}</animated.span>
+            </li>
+
+          </div>
+
+          <div>
+
+            <li className='optNavBar'>
+              <img src={calendarAdd} alt="createEvent-icon"/>
+            </li>
+
+            <li className='optNavBar'>
+              <animated.span style={{ opacity }} onClick={() => setShowForm(true)}>{isOpen ? 'Create Event' : null}</animated.span>
+            </li>
+
+          </div>
+
+          <div>
+
+            <li className='optNavBar'>
+            <img 
+                src={isOpen ? close : open} 
+                alt="navbar-icon" 
+                onClick={() => setIsOpen(!isOpen)} 
+                style={{ transform: isOpen ? 'rotate(360deg)' : '' }}
+            />
+            </li>
+
+          </div>
+          
           
         </ul>
 

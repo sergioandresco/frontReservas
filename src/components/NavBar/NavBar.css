@@ -1,5 +1,7 @@
 .NavBar{
     background: linear-gradient(180deg, rgba(65,4,237,0.78) 0%, rgba(17,3,56,0.97) 65%);
+    height: 100vh;
+    width: max-content;
 }
 
 .container-optNavBar{
@@ -9,6 +11,13 @@
     align-items: center;
     list-style: none;
     padding: 0px;
+}
+
+.container-optNavBar > div{
+    height: 57px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .optNavBar > img{
