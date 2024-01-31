@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './NavBar.css'
 import { useSpring, animated } from 'react-spring';
 import home from '../../img/home.svg';
+import user from '../../img/user.svg';
 import calendarEvent from '../../img/calendar-event.svg';
 import calendarAdd from '../../img/calendar-add.svg';
 import calendarList from '../../img/calendar-list.svg';
 import open from '../../img/open-navbar.svg';
 import close from '../../img/close-navbar.svg';
 
-const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void, setShowHome: (value: boolean) => void }> = ({ setShowForm, setShowListEvent, setShowHome }) => {
+const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void, setShowHome: (value: boolean) => void, setShowLogin: (value: boolean) => void }> = ({ setShowForm, setShowListEvent, setShowHome, setShowLogin }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -68,6 +69,18 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
 
             <li className='optNavBar'>
               <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); setShowHome(false);}}>{isOpen ? 'Event List' : null}</animated.span>
+            </li>
+
+          </div>
+
+          <div>
+
+            <li className='optNavBar'>
+              <img src={user} alt="user-icon"/>
+            </li>
+
+            <li className='optNavBar'>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(false); setShowHome(false); setShowLogin(true);}}>{isOpen ? 'Ingresar' : null}</animated.span>
             </li>
 
           </div>

@@ -6,6 +6,7 @@ function Reserv({ selectedEventId, selectedEventPlaces }){
     const [quantity, setQuantity] = useState(0);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [contador, setContador] = useState('');
 
     console.log(selectedEventId)
 

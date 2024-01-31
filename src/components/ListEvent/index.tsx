@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Reserv } from '../Reserv/index.tsx'
 import logo from '../../img/portada-eventos.png';
 import './ListEvent.css'
+import { useAuth } from '../../Context/index.tsx';
 
 function ListEvent() {
     const [events, setEvents] = useState([]);
@@ -9,11 +10,18 @@ function ListEvent() {
     const [selectedEventId, setSelectedEventId] = useState(null);
     const [selectedEventPlaces, setSelectedEventPlaces] = useState(null);
 
+    const { accessToken } = useAuth();
+
+    console.log(accessToken);
 
     const handleClick = (eventId, eventPlaces) => {
-        setSelectedEventId(eventId);
-        setSelectedEventPlaces(eventPlaces);
-        setShowReserv(true);
+        if (!accessToken) {
+            alert("Debe loguearse para reservar");
+        } else {
+            setSelectedEventId(eventId);
+            setSelectedEventPlaces(eventPlaces);
+            setShowReserv(true);
+        }
     };
 
     useEffect(() => {
