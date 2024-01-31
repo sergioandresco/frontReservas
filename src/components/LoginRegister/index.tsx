@@ -2,16 +2,15 @@ import React, { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './LoginRegister.css'
 import Cookies from 'js-cookie';
-
+import { Perfil } from '../Perfil/index.tsx'
 const LoginRegister: FC = () => {
-
-    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
 
     const handleLoginSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -30,11 +29,10 @@ const LoginRegister: FC = () => {
 
             const data = await response.json();
             const accessToken = data.data.access;
-            
-            Cookies.set('accessToken', accessToken, { expires: 1 });
-            console.log(accessToken);
 
-            navigate('/components/Home');
+            Cookies.set('accessToken', accessToken, { expires: 1 });
+            setIsLoggedIn(true); // Marcar al usuario como autenticado
+
         } catch (error) {
             console.error('Error:', error);
         }
@@ -55,10 +53,17 @@ const LoginRegister: FC = () => {
                 throw new Error('Registration failed');
             }
 
+            setIsLoggedIn(true); // Marcar al usuario como autenticado después del registro exitoso
+
         } catch (error) {
             console.error('Error:', error);
         }
     };
+
+    // Si el usuario está autenticado, renderizar el componente Perfil
+    if (isLoggedIn) {
+        return <Perfil />;
+    }
 
     return (
        <div className="container-form-login">

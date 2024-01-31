@@ -8,8 +8,9 @@ import calendarAdd from '../../img/calendar-add.svg';
 import calendarList from '../../img/calendar-list.svg';
 import open from '../../img/open-navbar.svg';
 import close from '../../img/close-navbar.svg';
+import { useAuth } from '../../Context/index.tsx';
 
-const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void, setShowHome: (value: boolean) => void, setShowLogin: (value: boolean) => void }> = ({ setShowForm, setShowListEvent, setShowHome, setShowLogin }) => {
+const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void, setShowHome: (value: boolean) => void, setShowLogin: (value: boolean) => void, setShowPerfil: (value: boolean) => void }> = ({ setShowForm, setShowListEvent, setShowHome, setShowLogin, setShowPerfil }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,6 +25,10 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
     from: { opacity: 0 },
     config: { duration: 300 },
   });
+
+  const { accessToken } = useAuth();
+
+  console.log(accessToken)
 
   return (
     <div className='NavBar'>
@@ -85,6 +90,20 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
 
           </div>
 
+          {accessToken && (
+            <div>
+
+              <li className='optNavBar'>
+                <img src={calendarEvent} alt="user-icon"/>
+              </li>
+
+              <li className='optNavBar'>
+                <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(false); setShowHome(false); setShowLogin(false); setShowPerfil(true);}}>{isOpen ? 'Reservas' : null}</animated.span>
+              </li>
+
+            </div>
+          )}
+    
           <div>
 
             <li className='optNavBar'>

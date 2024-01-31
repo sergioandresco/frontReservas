@@ -5,6 +5,7 @@ import { FormCreateEvent } from '../components/FormCreateEvent/index.tsx'
 import { ListEvent } from '../components/ListEvent/index.tsx'
 import { Home } from '../components/Home/index.tsx'
 import LoginRegister from '../components/LoginRegister/index.tsx'
+import { Perfil } from '../components/Perfil/index.tsx'
 import { AuthProvider } from '../Context/index.tsx';
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
   const [showListEvent, setShowListEvent] = useState(false);
   const [showHome, setShowHome] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
+  const [showPerfil, setShowPerfil] = useState(false);
+
 
   return (
     <div className="App container">
@@ -22,6 +25,7 @@ function App() {
         setShowListEvent={setShowListEvent}
         setShowHome={setShowHome}
         setShowLogin={setShowLogin}
+        setShowPerfil={setShowPerfil}
       />
 
       <div className=''>
@@ -31,9 +35,13 @@ function App() {
 
         <AuthProvider>
           {showListEvent && <ListEvent />}
+          {showLogin && <LoginRegister />}
+          {showPerfil && <Perfil />}
         </AuthProvider>
         
-        {showLogin && <LoginRegister />}
+        
+        
+
       </div>
       
 
