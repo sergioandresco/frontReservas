@@ -12,7 +12,7 @@ function App() {
   const [showHome, setShowHome] = useState(true);
 
   return (
-    <div className="App">
+    <div className="App container">
       
       <NavBar 
         setShowForm={setShowForm} 
@@ -20,7 +20,7 @@ function App() {
         setShowHome={setShowHome}
       />
 
-      <div>
+      <div className=''>
         {showHome && <Home />}
 
         {showForm && <FormCreateEvent />}
