@@ -8,7 +8,7 @@ import calendarList from '../../img/calendar-list.svg';
 import open from '../../img/open-navbar.svg';
 import close from '../../img/close-navbar.svg';
 
-const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void }> = ({ setShowForm, setShowListEvent }) => {
+const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent: (value: boolean) => void, setShowHome: (value: boolean) => void }> = ({ setShowForm, setShowListEvent, setShowHome }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,7 +43,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }}>{isOpen ? 'Home' : null}</animated.span>
+            <animated.span style={{ opacity }} onClick={() => { setShowHome(true); setShowForm(false); setShowListEvent(false); }}>{isOpen ? 'Home' : null}</animated.span>
             </li>
 
           </div>
@@ -55,7 +55,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => { setShowForm(true); setShowListEvent(false); }}>{isOpen ? 'Create Event' : null}</animated.span>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(true); setShowListEvent(false); setShowHome(false);}}>{isOpen ? 'Create Event' : null}</animated.span>
             </li>
 
           </div>
@@ -67,7 +67,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); }}>{isOpen ? 'Event List' : null}</animated.span>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); setShowHome(false);}}>{isOpen ? 'Event List' : null}</animated.span>
             </li>
 
           </div>
