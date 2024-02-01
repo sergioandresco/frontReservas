@@ -121,7 +121,6 @@ const LoginRegister: FC = () => {
 
     // Si el usuario está autenticado, renderizar el componente Perfil
     if (isLoggedIn) {
-        window.location.reload();
         return <Perfil />;
     }
 
