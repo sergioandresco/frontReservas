@@ -28,6 +28,9 @@ Remember to register and log in so you can use the entire platform.</p>
 
 Keep in mind that the backend must be constantly running on port 8000
 
+<p>Link to a test video of the website</p>
+[Go web -› https://youtu.be/15eIaFhHdPQ]
+
 <h2>Below screenshots from the frontend side</h2>
 
 <p>Link to gallery</p>
