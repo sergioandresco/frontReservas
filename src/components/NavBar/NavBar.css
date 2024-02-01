@@ -29,3 +29,37 @@
 .optNavBar > span{
     color: white;
 }
+
+@media (min-width: 0px) and (max-width: 844px){
+    .div-responsive{
+        width: 100% !important;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    .App {
+        display: grid;
+        grid-template-columns: 100%;
+        min-height: 100vh;
+    }
+
+    .NavBar {
+        background: linear-gradient(180deg, rgba(65,4,237,0.78) 0%, rgba(17,3,56,0.97) 65%);
+        height: 8vh;
+        width: 100%;
+        padding-right: 5px;
+        position: absolute;
+    }
+
+    .container-optNavBar {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        padding: 0px;
+        gap: 16px;
+    }
+
+}

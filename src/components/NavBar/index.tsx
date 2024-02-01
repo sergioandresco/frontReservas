@@ -38,6 +38,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
           width: width.interpolate((width) => `${width}px`),
           overflow: 'hidden',
         }}
+        className="div-responsive"
       >
 
         <ul className='container-optNavBar'>

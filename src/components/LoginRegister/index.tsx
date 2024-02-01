@@ -112,7 +112,7 @@ const LoginRegister: FC = () => {
             Cookies.set('accessToken', accessToken, { expires: 1 });
             setAccessToken(accessToken);
             setIsLoggedIn(true);
-            // window.location.reload();
+            window.location.reload();
 
         } catch (error) {
             console.error('Error:', error);
@@ -121,7 +121,7 @@ const LoginRegister: FC = () => {
 
     // Si el usuario está autenticado, renderizar el componente Perfil
     if (isLoggedIn) {
-        // window.location.reload();
+        window.location.reload();
         return <Perfil />;
     }
 

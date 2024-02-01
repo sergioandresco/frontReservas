@@ -173,3 +173,27 @@
     transform: rotateX(90deg) translateZ(-40px);
     filter: blur(12px);
 }
+
+@media (min-width: 0px) and (max-width: 844px){
+    .glitch {
+        position: relative;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: black;
+        letter-spacing: 5px;
+        z-index: 1;
+        animation: shift 1s ease-in-out infinite alternate;
+        width: 204px;
+        text-align: center;
+    }
+
+    .pyramid-loader {
+        position: relative;
+        width: 201px;
+        height: 220px;
+        display: block;
+        transform-style: preserve-3d;
+        transform: rotateX(-20deg);
+    }
+}

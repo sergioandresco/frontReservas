@@ -15,7 +15,8 @@ function FormCreateEvent() {
             name,
             description,
             date_event: dateEvent,
-            number_of_places: numberOfPlaces
+            number_of_places: numberOfPlaces,
+            number_of_places_available: numberOfPlaces
         };
 
         try {

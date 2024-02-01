@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../Context/index.tsx';
 import './Reserv.css'
 
@@ -59,6 +59,7 @@ function Reserv({ selectedEventId, selectedEventPlaces }){
         } else {
             // setSuccessMessage('');
             alert('¡Reserva realizada con éxito!');
+            setSuccessMessage('¡Reserva realizada con éxito!');
         }
     };    
 
