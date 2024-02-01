@@ -6,6 +6,7 @@ import { ListEvent } from '../components/ListEvent/index.tsx'
 import { Home } from '../components/Home/index.tsx'
 import LoginRegister from '../components/LoginRegister/index.tsx'
 import { Perfil } from '../components/Perfil/index.tsx'
+import { Reserv } from '../components/Reserv/index.tsx'
 import { AuthProvider } from '../Context/index.tsx';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   const [showHome, setShowHome] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
   const [showPerfil, setShowPerfil] = useState(false);
+  const [showReserv, setShowReserv] = useState(false);
 
 
   return (
@@ -41,11 +43,16 @@ function App() {
         <AuthProvider>
           {showListEvent && <ListEvent />}
           {showLogin && <LoginRegister />}
+          
+        </AuthProvider>
+        
+        <AuthProvider>
           {showPerfil && <Perfil />}
         </AuthProvider>
         
-        
-        
+        <AuthProvider>
+          {showReserv && <Reserv />}
+        </AuthProvider>
 
       </div>
       

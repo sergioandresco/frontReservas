@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from '../../Context/index.tsx';
 import './Reserv.css'
 
 function Reserv({ selectedEventId, selectedEventPlaces }){
@@ -7,8 +8,8 @@ function Reserv({ selectedEventId, selectedEventPlaces }){
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [contador, setContador] = useState('');
+    const { accessToken, userId } = useAuth();
 
-    console.log(selectedEventId)
 
     // const handleSubmit = async (event) => {
     //     event.preventDefault();
@@ -31,8 +32,7 @@ function Reserv({ selectedEventId, selectedEventPlaces }){
     //         console.log('Reserva realizada con éxito');
     //     }
     // };    
-
-    console.log(selectedEventId)
+    console.log("User ID en Reservas:", userId);
     const handleSubmit = async (event) => {
         event.preventDefault();
     
@@ -49,7 +49,7 @@ function Reserv({ selectedEventId, selectedEventPlaces }){
             body: JSON.stringify({
                 places_reserv: quantity,
                 event: selectedEventId,
-                user: 1,
+                user: userId,
             }),
         });
     

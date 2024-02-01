@@ -28,7 +28,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
 
   const { accessToken } = useAuth();
 
-  console.log("este es el token" + accessToken)
+  // console.log("este es el token" + accessToken)
 
   return (
     <div className='NavBar'>

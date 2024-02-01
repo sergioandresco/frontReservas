@@ -13,34 +13,81 @@ const LoginRegister: FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const { setAccessToken } = useAuth();
+    const { setAccessToken, setUserId } = useAuth();
 
+
+    // const handleLoginSubmit = async (event: React.FormEvent) => {
+    //     event.preventDefault();
+    //     try {
+    //         const response = await fetch('http://localhost:8000/auth/', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ username, password }),
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Login failed');
+    //         }
+
+    //         const data = await response.json();
+    //         console.log(data)
+    //         const accessToken = data.data.access;
+
+    //         Cookies.set('accessToken', accessToken, { expires: 1 });
+    //         setAccessToken(accessToken);
+    //         setIsLoggedIn(true);
+    //         // window.location.reload(); // Marcar al usuario como autenticado
+
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // };
 
     const handleLoginSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/auth/', {
-                method: 'POST',
+            const response = await fetch("http://localhost:8000/auth/", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ username, password }),
             });
 
             if (!response.ok) {
-                throw new Error('Login failed');
+                throw new Error("Login failed");
             }
 
             const data = await response.json();
             const accessToken = data.data.access;
 
-            Cookies.set('accessToken', accessToken, { expires: 1 });
+            Cookies.set("accessToken", accessToken, { expires: 1 });
             setAccessToken(accessToken);
             setIsLoggedIn(true);
-            window.location.reload(); // Marcar al usuario como autenticado
+
+            // Obtener el ID del usuario
+            const userResponse = await fetch("http://localhost:8000/all-user/", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!userResponse.ok) {
+                throw new Error("Failed to fetch user data");
+            }
+
+            const userData = await userResponse.json();
+            const userId = userData.user_id;
+
+            Cookies.set("userId", userId, { expires: 1 });
+            setUserId(userId);
+            console.log("User ID:", userId);
 
         } catch (error) {
-            console.error('Error:', error);
+            console.error("Error:", error);
         }
     };
 
@@ -65,7 +112,7 @@ const LoginRegister: FC = () => {
             Cookies.set('accessToken', accessToken, { expires: 1 });
             setAccessToken(accessToken);
             setIsLoggedIn(true);
-            window.location.reload();
+            // window.location.reload();
 
         } catch (error) {
             console.error('Error:', error);
@@ -74,7 +121,7 @@ const LoginRegister: FC = () => {
 
     // Si el usuario está autenticado, renderizar el componente Perfil
     if (isLoggedIn) {
-        window.location.reload();
+        // window.location.reload();
         return <Perfil />;
     }
 
