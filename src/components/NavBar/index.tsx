@@ -28,7 +28,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
 
   const { accessToken } = useAuth();
 
-  console.log(accessToken)
+  console.log("este es el token" + accessToken)
 
   return (
     <div className='NavBar'>
@@ -49,7 +49,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-            <animated.span style={{ opacity }} onClick={() => { setShowHome(true); setShowForm(false); setShowListEvent(false); }}>{isOpen ? 'Home' : null}</animated.span>
+            <animated.span style={{ opacity }} onClick={() => { setShowHome(true); setShowForm(false); setShowListEvent(false); setShowLogin(false); setShowPerfil(false);}}>{isOpen ? 'Home' : null}</animated.span>
             </li>
 
           </div>
@@ -61,7 +61,7 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => { setShowForm(true); setShowListEvent(false); setShowHome(false);}}>{isOpen ? 'Create Event' : null}</animated.span>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(true); setShowListEvent(false); setShowHome(false); setShowLogin(false); setShowPerfil(false);}}>{isOpen ? 'Create Event' : null}</animated.span>
             </li>
 
           </div>
@@ -73,24 +73,12 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
             </li>
 
             <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); setShowHome(false);}}>{isOpen ? 'Event List' : null}</animated.span>
+              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(true); setShowHome(false); setShowLogin(false); setShowPerfil(false);}}>{isOpen ? 'Event List' : null}</animated.span>
             </li>
 
           </div>
 
-          <div>
-
-            <li className='optNavBar'>
-              <img src={user} alt="user-icon"/>
-            </li>
-
-            <li className='optNavBar'>
-              <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(false); setShowHome(false); setShowLogin(true);}}>{isOpen ? 'Ingresar' : null}</animated.span>
-            </li>
-
-          </div>
-
-          {accessToken && (
+          {accessToken ? (
             <div>
 
               <li className='optNavBar'>
@@ -99,6 +87,18 @@ const NavBar: React.FC<{ setShowForm: (value: boolean) => void, setShowListEvent
 
               <li className='optNavBar'>
                 <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(false); setShowHome(false); setShowLogin(false); setShowPerfil(true);}}>{isOpen ? 'Reservas' : null}</animated.span>
+              </li>
+
+            </div>
+          ):(
+            <div>
+
+              <li className='optNavBar'>
+                <img src={user} alt="user-icon"/>
+              </li>
+
+              <li className='optNavBar'>
+                <animated.span style={{ opacity }} onClick={() => { setShowForm(false); setShowListEvent(false); setShowHome(false); setShowLogin(true); setShowPerfil(false);}}>{isOpen ? 'Ingresar' : null}</animated.span>
               </li>
 
             </div>

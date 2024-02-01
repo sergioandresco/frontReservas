@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import './LoginRegister.css'
 import Cookies from 'js-cookie';
 import { Perfil } from '../Perfil/index.tsx'
+import { useAuth } from '../../Context/index.tsx';
+
 const LoginRegister: FC = () => {
 
     const [username, setUsername] = useState("");
@@ -10,7 +12,9 @@ const LoginRegister: FC = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está autenticado
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { setAccessToken } = useAuth();
+
 
     const handleLoginSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -31,7 +35,9 @@ const LoginRegister: FC = () => {
             const accessToken = data.data.access;
 
             Cookies.set('accessToken', accessToken, { expires: 1 });
-            setIsLoggedIn(true); // Marcar al usuario como autenticado
+            setAccessToken(accessToken);
+            setIsLoggedIn(true);
+            window.location.reload(); // Marcar al usuario como autenticado
 
         } catch (error) {
             console.error('Error:', error);
@@ -53,7 +59,13 @@ const LoginRegister: FC = () => {
                 throw new Error('Registration failed');
             }
 
-            setIsLoggedIn(true); // Marcar al usuario como autenticado después del registro exitoso
+            const data = await response.json();
+            const accessToken = data.data.access;
+
+            Cookies.set('accessToken', accessToken, { expires: 1 });
+            setAccessToken(accessToken);
+            setIsLoggedIn(true);
+            window.location.reload();
 
         } catch (error) {
             console.error('Error:', error);
@@ -62,6 +74,7 @@ const LoginRegister: FC = () => {
 
     // Si el usuario está autenticado, renderizar el componente Perfil
     if (isLoggedIn) {
+        window.location.reload();
         return <Perfil />;
     }
 

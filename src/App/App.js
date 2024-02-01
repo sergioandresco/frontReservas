@@ -20,13 +20,18 @@ function App() {
   return (
     <div className="App container">
       
-      <NavBar 
-        setShowForm={setShowForm} 
-        setShowListEvent={setShowListEvent}
-        setShowHome={setShowHome}
-        setShowLogin={setShowLogin}
-        setShowPerfil={setShowPerfil}
-      />
+      <AuthProvider>
+
+        <NavBar 
+          setShowForm={setShowForm} 
+          setShowListEvent={setShowListEvent}
+          setShowHome={setShowHome}
+          setShowLogin={setShowLogin}
+          setShowPerfil={setShowPerfil}
+        />
+
+      </AuthProvider>
+      
 
       <div className=''>
         {showHome && <Home />}
