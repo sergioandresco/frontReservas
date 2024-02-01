@@ -28,3 +28,18 @@ Remember to register and log in so you can use the entire platform.</p>
 
 Keep in mind that the backend must be constantly running on port 8000
 
+<h2>Below screenshots from the frontend side</h2>
+
+<p>Link to gallery</p>
+[Go web -› https://postimg.cc/gallery/TxDrmp3]
+
+<img src="https://i.postimg.cc/ygB3XDD5/Captura-de-pantalla-2024-02-01-012250.png" alt="img1"/>
+<img src="https://i.postimg.cc/bsFbcY5D/Captura-de-pantalla-2024-02-01-012309.png" alt="img2"/>
+<img src="https://i.postimg.cc/H8kJRF49/Captura-de-pantalla-2024-02-01-012330.png" alt="img3"/>
+<img src="https://i.postimg.cc/hzrzCKxG/Captura-de-pantalla-2024-02-01-012350.png" alt="img4"/>
+<img src="https://i.postimg.cc/1gDNqG3w/Captura-de-pantalla-2024-02-01-012407.png" alt="img5"/>
+<img src="https://i.postimg.cc/w1CmMfg9/Captura-de-pantalla-2024-02-01-012422.png" alt="img6"/>
+<img src="https://i.postimg.cc/Sn29yF0Z/Captura-de-pantalla-2024-02-01-014111.png" alt="img7"/>
+<img src="https://i.postimg.cc/JGhJ2HpC/Captura-de-pantalla-2024-02-01-014141.png" alt="img8"/>
+
+
